@@ -1,0 +1,87 @@
+/* --------------- popular cat style1 --------------- */
+.tc-popular-cat-style1 {
+
+    .search-cat {
+        border-radius: 30px;
+        border: 1px solid #ebeef6;
+        overflow: hidden;
+        position: relative;
+        margin-bottom: 40px;
+        .input-group {
+            flex-wrap: nowrap;
+        }
+        .search-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50% !important;
+            line-height: 40px;
+            text-align: center;
+            background-color: var(--color-blue1);
+            color: #fff;
+        }
+        .form-select {
+            background-color: #ebeef6;
+            border: 0;
+            font-size: 13px;
+            min-width: 140px;
+        }
+        .form-control {
+            border: 0;
+            font-size: 13px;
+            min-height: 45px;
+            flex-shrink: 0;
+            width: 280px;
+            max-width: 75%;
+            &::placeholder {
+                color: #999;
+            }
+        }
+    }
+
+    .cat-content {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        .cat-card {
+            margin-top: 40px;
+            text-align: center;
+            margin-inline-end: 15px;
+            &:last-of-type {
+                margin-inline-end: 0;
+            }
+            &:hover{
+                .img{
+                    outline: 1px solid var(--color-blue1);
+                    outline-offset: 3px;
+                }
+                p{
+                    text-decoration: underline;
+                }
+            }
+            .img{
+                width: 110px;
+                height: 110px;
+                line-height: 110px;
+                border-radius: 50%;
+                background-color: #e3e3ec;
+                text-align: center;
+                transition: all 0.3s ease;
+                img{
+                    max-height: 50%;
+                }
+            }
+            
+        }
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .tc-popular-cat-style1 .cat-content {
+        justify-content: space-around;
+    }
+}

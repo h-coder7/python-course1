@@ -1,0 +1,69 @@
+/* --------------- thanks-sec style1 --------------- */
+.thanks-sec {
+    position: relative;
+  }
+  .thanks-sec .thank-txt {
+    position: relative;
+    font-size: 50px;
+    font-family: "Great Vibes", serif;
+  }
+  .thanks-sec .order-head {
+    position: relative;
+    padding: 15px 30px;
+    border-radius: 15px;
+    background-color: #f0f4f9;
+    margin-top: 40px;
+  }
+  .thanks-sec .order-head .item {
+    position: relative;
+    margin: 10px 0;
+    font-size: 14px;
+    text-transform: capitalize;
+  }
+  .thanks-sec .order-table {
+    position: relative;
+    border: 1px solid rgba(153, 153, 153, 0.2);
+    border-radius: 15px;
+    background: linear-gradient(180deg, #f0f4f9 0%, rgba(246, 247, 251, 0) 100%);
+    overflow: hidden;
+    margin-top: 15px;
+  }
+  .thanks-sec .order-table .tb-row {
+    position: relative;
+    display: flex;
+  }
+  .thanks-sec .order-table .tb-row .item {
+    position: relative;
+    flex: 1;
+    padding: 15px 30px;
+    border-inline-end: 1px solid rgba(153, 153, 153, 0.2);
+  }
+  .thanks-sec .order-table .tb-row .item:last-of-type {
+    border: 0;
+    flex: 0.5;
+  }
+  .thanks-sec .order-table .tb-row:nth-of-type(odd) {
+    background-color: #fff;
+  }
+  .thanks-sec .order-table .tb-row:last-of-type {
+    background-color: #f0f4f9;
+    border-radius: 20px;
+    outline: 10px solid #fff;
+    outline-offset: -10px;
+  }
+  .thanks-sec .order-table .tb-row:last-of-type .item {
+    padding: 30px 30px;
+  }
+  
+  .tc-banner-style3 .banner-card {
+    padding: 35px;
+    background-image: url(../img/banner2.png);
+    background-size: cover;
+    border-radius: 15px;
+    overflow: hidden;
+    color: #fff;
+  }
+  .tc-banner-style3 .banner-card .text-color {
+    color: #ffe400;
+    margin: 0 3px;
+  }

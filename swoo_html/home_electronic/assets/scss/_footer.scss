@@ -1,0 +1,94 @@
+/* --------------- footer style1 --------------- */
+.tc-footer-style1 {
+
+    .foot-content {
+        padding: 60px 0;
+        .foot-social {
+            a{
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+                text-align: center;
+                border: 1px solid #9993;
+                border-radius: 50%;
+                margin-inline-end: 10px;
+                font-size: 14px;
+                &:hover {
+                    background-color: var(--color-blue1);
+                    color: #fff;
+                }
+            }
+        }
+        .links {
+            li {
+                a{
+                    line-height: 2;
+                    color: #666;
+                    &:hover {
+                        color: var(--color-blue1);
+                    }
+                }
+            }
+        }
+    }
+
+    .foot {
+        padding: 40px 0;
+        background-color: #ebeef6;
+
+        .links {
+            .links-ul{
+                display: flex;
+                align-items: center;
+                &>li{
+                    margin-inline-end: 25px;
+                    &:first-of-type {
+                        margin-inline-end: 35px;
+                    }
+                    &:last-of-type {
+                        margin-inline-end: 0;
+                    }
+                    a{
+                        i{
+                            font-size: 18px;
+                        }
+                        &:hover{
+                            color: var(--color-blue1);
+                        }
+                        &.active {
+                            font-weight: bold;
+                            color: var(--color-blue1);
+                        }
+                    }
+                }
+            }
+            .dropdown-menu{
+                li{
+                    margin-inline-end: 0 !important;
+                }
+            }
+        }
+
+        .lang-links {
+            margin-inline-end: 0;
+            margin-inline-start: auto;
+            .links-ul {
+                &>li{
+                    margin: 0 !important;
+                    padding: 0 20px;
+                    border-inline-end: 1px solid #9999;
+                    &:last-of-type{
+                        padding-inline-end: 0;
+                        border: 0;
+                    }
+                }
+            }
+        }
+
+    }
+    
+}
+
+@media screen and (max-width: 991px) {
+
+}

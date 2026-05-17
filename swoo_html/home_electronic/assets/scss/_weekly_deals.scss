@@ -1,0 +1,206 @@
+/* --------------- weekly deals style1 --------------- */
+.tc-weekly-deals-style1 {
+
+    .content {
+        position: relative;
+        padding: 30px;
+        background-color: #ebeef6;
+        border-radius: 20px;
+
+        .title {
+            display: flex;
+            align-items: center;
+            .countdown {
+                padding: 10px 30px;
+                display: flex;
+                align-items: center;
+                border-radius: 30px;
+                .item {
+                    margin: 0 5px;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+            }
+            .arrows {
+                a{
+                    width: 40px;
+                    height: 40px;
+                    line-height: 40px;
+                    text-align: center;
+                    border-radius: 50%;
+                    background-color: #fff;
+                    &:hover {
+                        background-color: #212127;
+                        color: #fff;
+                    }
+                }
+            }
+        }
+
+        .deals-cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            .column-sm {
+                width: 19%;
+            }
+            .column-lg {
+                width: 38%;
+            }
+        }
+
+        .deal-card {
+            position: relative;
+            background-color: #fff;
+            border: 1px solid #9999;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            &:hover {
+                .top {
+                    .icons {
+                        .icon {
+                            margin-bottom: 10px;
+                            opacity: 1;
+                        }
+                    }
+                }
+                .info {
+                    top: -50px;
+                }
+                .cart-btn {
+                    opacity: 1;
+                }
+            }
+
+            .top {
+                display: flex;
+                justify-content: space-between;
+                padding: 15px;
+                position: relative;
+                min-height: 60px;
+                small {
+                    height: max-content;
+                }
+                .icons {
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    width: max-content;
+                    .icon {
+                        display: block;
+                        margin-bottom: 0;
+                        width: 30px;
+                        height: 30px;
+                        line-height: 30px;
+                        text-align: center;
+                        border-radius: 50%;
+                        border: 1px solid #9999;
+                        opacity: 0;
+                        &.active,
+                        &:hover {
+                            background-color: var(--color-blue1);
+                            border-color: var(--color-blue1);
+                            color: #fff;
+                        }
+                    }
+                    .fav {
+                        opacity: 1;
+                    }
+                }
+            }
+            .img {
+                padding: 0 15px;
+            }
+
+            .info{
+                position: relative;
+                top: 0;
+                background-color: #fff;
+                background: linear-gradient(to top, #fff , #fff , transparent);
+                border-radius: 0 0 10px 10px;
+                padding: 15px;
+                z-index: 10;
+                transition: all 0.3s ease;
+                .stars {
+                    i{
+                        color: #cfcfcf;
+                        &.active {
+                            color: #009900;
+                        }
+                    }
+                }
+                .progress {
+                    height: 5px;
+                    border-radius: 5px;
+                    background-color: #e5e8f3;
+                    .progress-bar {
+                        border-radius: 5px;
+                    }
+                }
+            }
+
+            .cart-btn{
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                font-size: 13px;
+                font-weight: bold;
+                width: 100%;
+                text-align: center;
+                padding: 30px 15px 15px;
+                background-color: var(--color-blue1);
+                color: #fff;
+                border-radius: 0 0 10px 10px;
+                opacity: 0;
+                i{
+                    font-size: 18px;
+                }
+                &:hover {
+                    background-color: #000;
+                }
+            }
+        }
+
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .tc-weekly-deals-style1 {
+        .content {
+            // padding: 30px 15px;
+        }
+        .deals-cards {
+            .column-sm {
+                width: 100% !important;
+            }
+            .column-lg {
+                width: 100% !important;
+            }
+
+            .deal-card {
+                .info {
+                    top: -50px;
+                }
+                .img {
+                    height: 200px !important;
+                    padding-bottom: 50px;
+                }
+                .cart-btn {
+                    opacity: 1;
+                }
+            }
+        }
+
+        .content .title {
+            display: block;
+            .countdown {
+                margin-top: 20px;
+                padding: 10px 15px;
+                * {
+                    font-size: 10px;
+                }
+            }
+        }
+    }
+}

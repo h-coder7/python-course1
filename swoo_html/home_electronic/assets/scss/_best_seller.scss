@@ -1,0 +1,178 @@
+/* --------------- footer style1 --------------- */
+.tc-best-seller-style1 {
+    padding: 60px 0;
+
+    .nav-pills {
+        .nav-link {
+            border-radius: 30px;
+            color: #000;
+            border: 1px solid #9999;
+            margin-inline-end: 10px;
+            &.active {
+                background-color: var(--color-blue1);
+                border-color: var(--color-blue1);
+                color: #fff;
+            }
+        }
+    }
+
+    .products-slider {
+        position: relative;
+        overflow: hidden;
+        .slider-controls{
+            position: relative;
+            background-color: #e5e6f3;
+            padding: 5px 50px;
+            border-radius: 20px;
+            display: block;
+            width: max-content;
+            margin: 50px auto 0;
+            z-index: 20;
+            .swiper-pagination{
+               position: relative;
+               bottom: 0;
+               .swiper-pagination-bullet{
+                  width: 7px;
+                  height: 7px;
+                  &.swiper-pagination-bullet-active{
+                     background-color: var(--color-blue1);
+                  }
+               }
+            }
+            .swiper-button-next,
+            .swiper-button-prev{
+               // position: relative;
+               &::after{
+                  font-size: 14px;
+                  color: #000;
+               }
+            }
+        }
+    }
+
+    .product-card {
+        position: relative;
+        background-color: #fff;
+        border: 1px solid #9999;
+        border-radius: 10px;
+        min-height: 420px;
+        &:hover {
+            .top {
+                .icons {
+                    .icon {
+                        margin-bottom: 10px;
+                        opacity: 1;
+                    }
+                }
+            }
+            .info {
+                bottom: 50px;
+            }
+            .cart-btn {
+                opacity: 1;
+            }
+        }
+
+        .top {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px;
+            position: relative;
+            min-height: 60px;
+            small {
+                height: max-content;
+            }
+            .icons {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                width: max-content;
+                .icon {
+                    display: block;
+                    margin-bottom: 0;
+                    width: 30px;
+                    height: 30px;
+                    line-height: 30px;
+                    text-align: center;
+                    border-radius: 50%;
+                    border: 1px solid #9999;
+                    opacity: 0;
+                    &.active,
+                    &:hover {
+                        background-color: var(--color-blue1);
+                        border-color: var(--color-blue1);
+                        color: #fff;
+                    }
+                }
+                .fav {
+                    opacity: 1;
+                }
+            }
+        }
+        .img {
+            padding: 0 15px;
+        }
+
+        .info{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: #fff;
+            background: linear-gradient(to top, #fff , #fff , transparent);
+            border-radius: 0 0 10px 10px;
+            padding: 15px;
+            z-index: 10;
+            transition: all 0.3s ease;
+            .stars {
+                i{
+                    color: #cfcfcf;
+                    &.active {
+                        color: #009900;
+                    }
+                }
+            }
+            .progress {
+                height: 5px;
+                border-radius: 5px;
+                background-color: #e5e8f3;
+                .progress-bar {
+                    border-radius: 5px;
+                }
+            }
+        }
+
+        .cart-btn{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            font-size: 13px;
+            font-weight: bold;
+            width: 100%;
+            text-align: center;
+            padding: 30px 15px 15px;
+            background-color: var(--color-blue1);
+            color: #fff;
+            border-radius: 0 0 10px 10px;
+            opacity: 0;
+            i{
+                font-size: 18px;
+            }
+            &:hover {
+                background-color: #000;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .tc-best-seller-style1 {
+        .nav-pills {
+            .nav-link {
+                margin-bottom: 10px;
+                font-size: 10px;
+            }
+        }
+    }
+}

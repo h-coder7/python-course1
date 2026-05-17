@@ -1,0 +1,17 @@
+/* --------------- buttons style --------------- */
+.butn {
+    padding: 15px 30px;
+    transition: all 0.2s ease;
+    position: relative;
+
+    &.md-butn {
+        padding: 10px 20px;
+    }
+
+    &:hover {
+        // box-shadow: inset 0px 0px 50px #0003 , 4px 5px 0 #0005;
+        box-shadow: 4px 5px 0 #0005;
+        box-shadow: 7px 10px 15px #0004;
+        transform: translateY(-2px);
+    }
+}

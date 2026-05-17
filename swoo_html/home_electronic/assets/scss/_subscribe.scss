@@ -1,0 +1,56 @@
+/* --------------- subscribe style1 --------------- */
+.tc-subscribe-style1 {
+    position: relative;
+    padding: 50px 0;
+    background-color: var(--color-blue1);
+    color: #fff;
+
+    .plane {
+        position: absolute;
+        left: 50%;
+        top: 0;
+        transform: translateX(-50%);
+        pointer-events: none;
+    }
+
+    .form-group {
+        position: relative;
+        height: 45px;
+        background-color: #fff;
+        border-radius: 50px;
+        display: flex;
+        align-items: center;
+        padding: 5px 5px 5px 20px;
+
+        .icon {
+            color: #000;
+            flex-shrink: 0;
+        }
+
+        input {
+            border: 0;
+            background-color: transparent;
+            padding-inline-start: 10px;
+            width: 100%;
+        }
+
+        button {
+            font-size: 13px;
+            border: 0;
+            height: 35px;
+            background-color: #000;
+            color: #fff;
+            border-radius: 30px;
+            text-transform: uppercase;
+            flex-shrink: 0;
+            padding: 5px 20px;
+        }
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .tc-subscribe-style1 {
+        margin-top: 30px;
+    }
+}

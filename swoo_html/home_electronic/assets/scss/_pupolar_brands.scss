@@ -1,0 +1,86 @@
+/* --------------- pupolar-brands style1 --------------- */
+.tc-pupolar-brands-style1 {
+
+    .content {
+        position: relative;
+        padding: 30px;
+        background-color: #ebeef6;
+        border-radius: 20px;
+        &::after {
+            position: absolute;
+            content: "";
+            left: -15px;
+            top: -15px;
+            width: calc(100% + 30px);
+            height: calc(100% + 30px);
+            border: 15px solid #fff;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .pupolar-slider {
+            position: relative;
+            // overflow: hidden;
+            
+            .swiper-button-next, .swiper-button-prev {
+                width: 50px;
+                height: 80px;
+                background-color: #fff;
+                box-shadow: 0 0 15px #0002;
+                margin-top: 0;
+                transform: translateY(-50%);
+                transition: all 0.3s ease;
+                &:hover {
+                    background-color: var(--color-blue1);
+                    &::after {
+                        color: #fff;
+                    }
+                }
+                &:after{
+                    transition: all 0.3s ease;
+                    color: var(--color-blue1);
+                    font-size: 16px;
+                }
+            }
+            .swiper-button-next, .swiper-rtl .swiper-button-prev {
+                right: -30px;
+                border-radius: 8px 0 0 8px;
+            }
+            .swiper-button-prev, .swiper-rtl .swiper-button-next {
+                left: -30px;
+                border-radius: 0 8px 8px 0;
+            }
+        }
+
+        .card-overlay {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            .info {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                max-width: 70%;
+                z-index: 10;
+            }
+            &.card-center {
+                .info {
+                    width: 100%;
+                    display: flex;
+                    align-content: space-between;
+                    justify-content: center;
+                    text-align: center;
+                    flex-wrap: wrap;
+                }
+            }
+            .color-lightGreen {
+                color: #b9f34f;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+
+}

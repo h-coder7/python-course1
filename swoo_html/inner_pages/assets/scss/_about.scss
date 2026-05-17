@@ -1,0 +1,265 @@
+/* --------------- about-pg style1 --------------- */
+.about-pg-1 {
+
+
+    .tc-main-about {
+
+        .main-card {
+            position: relative;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            .about-banner {
+                position: relative;
+                padding: 70px 5vw;
+                border-radius: 10px;
+                overflow: hidden;
+                background-image: url(../img/about/ban1.png);
+                background-size: cover;
+            }
+            .about-numbers {
+                position: relative;
+                padding: 60px 5vw;
+            }
+        }
+
+        .sub-cards {
+            .img {
+                height: 420px;
+                border-radius: 10px;
+                overflow: hidden;
+            }
+            .info-card {
+                position: relative;
+                border-radius: 10px;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                background-color: #e2e4eb;
+                padding: 70px 5vw;
+            }
+        }
+
+    }
+
+    .tc-about-cards {
+
+        .about-card {
+            position: relative;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 10px;
+            height: 100%;
+            .title {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 50px;
+                .icon {
+                    width: 60px;
+                    height: 60px;
+                    line-height: 60px;
+                    text-align: center;
+                    border-radius: 50%;
+                    color: #fff;
+                    background-color: var(--color-green2);
+                    font-size: 30px;
+                    flex-shrink: 0;
+                }
+            }
+        }
+
+    }
+
+    .years-content {
+        .year-card {
+            display: flex;
+            color: #666;
+            line-height: 1.8;
+        }
+    }
+
+    .leaderships {
+        position: relative;
+
+        .leaderships-content {
+            display: flex;
+            flex-wrap: wrap;
+            margin: 0 -4px;
+        }
+
+        .leader-card {
+            width: 20%;
+            padding: 12px 4px;
+            &:hover {
+                .img {
+                    &::after {
+                        opacity: 1;
+                    }
+                    .social-icons {
+                        bottom: 0;
+                        opacity: 1;
+                    }
+                }
+                h6 {
+                    color: var(--color-green2);
+                }
+            }
+            .img {
+                position: relative;
+                height: 320px;
+                border-radius: 10px;
+                overflow: hidden;
+                &::after {
+                    position: absolute;
+                    content: "";
+                    left: 0;
+                    bottom: 0;
+                    width: 100%;
+                    height: 50%;
+                    background-image: linear-gradient(to top, var(--color-green2), transparent);
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                    pointer-events: none;
+                }
+                .main-img {
+                    height: 320px;
+                }
+                .social-icons {
+                    position: absolute;
+                    left: 0;
+                    bottom: -50px;
+                    width: 100%;
+                    padding: 20px;
+                    z-index: 10;
+                    opacity: 0;
+                    transition: all 0.3s ease;
+                    a {
+                        width: 35px;
+                        height: 35px;
+                        line-height: 35px;
+                        text-align: center;
+                        border-radius: 50%;
+                        margin-inline-end: 10px;
+                        background-color: #28282b;
+                        color: #fff;
+                        &:hover {
+                            color: var(--color-green2);
+                        }
+                    }
+                }
+            }
+            h6 {
+                transition: all 0.3s ease;
+            }
+        }
+
+    }
+
+    .partners-clients {
+
+        .partners {
+            .logos {
+                display: flex;
+                flex-wrap: wrap;
+                .logo {
+                    width: 20%;
+                    text-align: center;
+                    margin-top: 42px;
+                }
+            }
+        }
+
+        .clients {
+            .clients-slider {
+                position: relative;
+                overflow: hidden;
+            }
+            .testi-card {
+                // padding: 40px;
+                // background-color: #fff;
+                // border-radius: 20px;
+                .rate {
+                    display: flex;
+                    align-items: center;
+                    .stars {
+                        margin-inline-end: 10px;
+                        flex-shrink: 0;
+                        color: var(--color-green1);
+                    }
+                }
+                .btm-items {
+                    display: flex;
+                    align-items: flex-end;
+                    justify-content: space-between;
+                    .user-info{
+                        display: flex;
+                        align-items: center;
+                        .img{
+                            position: relative;
+                            margin-inline-end: 10px;
+                            flex-shrink: 0;
+                            img{
+                                width: 40px;
+                                height: 40px;
+                                border-radius: 50%;
+                                object-fit: cover;
+                            }
+                            .icon{
+                                position: absolute;
+                                right: -3px;
+                                bottom: -3px;
+                                background-color: var(--color-green2);
+                                color: #fff;
+                                z-index: 5;
+                                border-radius: 50%;
+                                border: 3px solid #fff;
+                                width: 15px;
+                                height: 15px;
+                                font-size: 8px;
+                                line-height: 15px;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .tc-banner-style3 {
+        .banner-card {
+            padding: 35px;
+            background-image: url(../img/banner2.png);
+            background-size: cover;
+            border-radius: 15px;
+            overflow: hidden;
+            color: #fff;
+            .text-color {
+                color: #ffe400;
+                margin: 0 3px;
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 991px) {
+    .about-pg-1 .leaderships .leader-card {
+        width: 100%;
+    }
+
+    .about-pg-1 .partners-clients .partners .logos .logo {
+        width: 33%;
+    }
+
+    .about-pg-1 .partners-clients .clients .testi-card .rate {
+        display: block;
+        .stars {
+            margin-bottom: 15px;
+        }
+    }
+
+}

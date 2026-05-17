@@ -1,0 +1,99 @@
+/* --------------- header style1 --------------- */
+.tc-header-style1 {
+    padding-bottom: 30px;
+
+    .content {
+        .img {
+            border-radius: 20px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        .main-slider {
+            position: relative;
+            overflow: hidden;
+            .slide-card {
+                position: relative;
+                .info {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 40%;
+                    height: 100%;
+                    padding: 5vw;
+                    display: flex;
+                    align-items: center;
+                }
+            }
+            .slider-controls{
+                position: absolute;
+                left: 50%;
+                bottom: 50px;
+                transform: translateX(-50%);
+                background-color: #e5e6f3;
+                padding: 5px 50px;
+                border-radius: 20px;
+                display: inline-block;
+                z-index: 20;
+                .swiper-pagination{
+                   position: relative;
+                   bottom: 0;
+                   .swiper-pagination-bullet{
+                      width: 7px;
+                      height: 7px;
+                      &.swiper-pagination-bullet-active{
+                         background-color: #000;
+                      }
+                   }
+                }
+                .swiper-button-next,
+                .swiper-button-prev{
+                   // position: relative;
+                   &::after{
+                      font-size: 14px;
+                      color: #000;
+                   }
+                }
+            }
+        }
+
+        .card-overlay {
+            position: relative;
+            .info {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                z-index: 10;
+            }
+            &.card-center {
+                .info {
+                    width: 100%;
+                    display: flex;
+                    align-content: space-between;
+                    justify-content: center;
+                    text-align: center;
+                    flex-wrap: wrap;
+                }
+            }
+            .color-lightGreen {
+                color: #b9f34f;
+            }
+        }
+    }
+
+}
+
+@media screen and (max-width: 991px) {
+    .tc-header-style1 {
+        .content {
+            .main-slider {
+                .slide-card {
+                    .info {
+                        width: 70%;
+                    }
+                }
+            }
+        }
+    }
+}

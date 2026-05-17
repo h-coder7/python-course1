@@ -1,0 +1,103 @@
+/* --------------- thanks-sec style1 --------------- */
+.thanks-sec {
+    position: relative;
+
+    .thank-txt {
+        position: relative;
+        font-size: 50px;
+        font-family: "Great Vibes", serif;
+    }
+
+    .order-head {
+        position: relative;
+        padding: 15px 30px;
+        border-radius: 15px;
+        // background: linear-gradient(180deg, #f0f4f9 0%, rgba(246, 247, 251, 0) 100%);
+        background-color: #f0f4f9;
+        margin-top: 40px;
+        .item {
+            position: relative;
+            margin: 10px 0;
+            font-size: 14px;
+            text-transform: capitalize;
+        }
+    }
+
+    .order-table {
+        position: relative;
+        border: 1px solid #9993;
+        border-radius: 15px;
+        background: linear-gradient(180deg, #f0f4f9 0%, rgba(246, 247, 251, 0) 100%);
+        overflow: hidden;
+        margin-top: 15px;
+        // background-color: #f5f5f5;
+        .tb-row {
+            position: relative;
+            display: flex;
+            .item {
+                position: relative;
+                flex: 1;
+                padding: 15px 30px;
+                border-inline-end: 1px solid #9993;
+                &:last-of-type {
+                    border: 0;
+                    // width: 25%;
+                    flex: 0.5;
+                }
+            }
+            &:nth-of-type(odd) {
+                background-color: #fff;
+            }
+            &:last-of-type {
+                background-color: #f0f4f9;
+                border-radius: 20px;
+                outline: 10px solid #fff;
+                outline-offset: -10px;
+                .item {
+                    padding: 30px 30px;
+                }
+            }
+        }
+    }
+
+}
+
+
+@media screen and (max-width: 991px) {
+    .thanks-sec {
+
+    }
+}
+
+
+// ------------ banner style ------------
+.tc-banner-style3 {
+    .banner-card {
+        padding: 35px;
+        background-image: url(../img/banner2.png);
+        background-size: cover;
+        border-radius: 15px;
+        overflow: hidden;
+        color: #fff;
+        .text-color {
+            color: #ffe400;
+            margin: 0 3px;
+        }
+    }
+}
+
+
+@media print {
+    .tc-navbar-container-style3,
+    .tc-breadcrumb-style6,
+    .tc-footer-style3,
+    .tc-banner-style3,
+    .btns {
+        display: none;
+    }
+    .col-lg-6 {
+        flex: 0 0 auto;
+        width: 50%;
+    }
+}
+
