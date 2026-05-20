@@ -1,0 +1,112 @@
+{
+  "store_info": {
+    "name": "Swoo Electronics (متجر سوو للإلكترونيات)",
+    "description": "أكبر سوق إلكتروني للمنتجات الذكية والتقنية في نيويورك والشرق الأوسط.",
+    "address": "257 Thatcher Road St, Brooklyn, Manhattan, NY 10092",
+    "hotline": "(025) 3686 25 16",
+    "email": "contact@Swootechmart.com",
+    "working_hours": "دعم فني متاح 24/7 طوال أيام الأسبوع"
+  },
+  "store_policies": {
+    "shipping": {
+      "policy_text": "شحن مجاني بالكامل لأي طلب تتجاوز قيمته 199 دولار أمريكي.",
+      "delivery_time": "يتم التوصيل والشحن السريع إلى باب منزلك خلال 2 إلى 3 أيام عمل فقط."
+    },
+    "returns_refunds": {
+      "policy_text": "نقدم ضمان استرداد كامل للأموال بدون تعقيدات خلال 30 يوماً من استلام المنتج إذا لم ينل إعجابك."
+    },
+    "security": {
+      "policy_text": "جميع طرق الدفع لدينا مشفرة وآمنة بنسبة 100% (نقبل بطاقات الائتمان، مدى، بايبال والتقسيط المريح بـ 0% فوائد)."
+    }
+  },
+  "top_categories": [
+    "أجهزة اللاب توب (Laptops)",
+    "الكمبيوتر المكتبي (PC & Computers)",
+    "الهواتف الذكية (Cell Phones)",
+    "أجهزة التابلت (Tablets)",
+    "ألعاب الفيديو والواقع الافتراضي (Gaming & VR)",
+    "الشبكات والاتصالات (Networks)",
+    "كاميرات التصوير الاحترافية (Cameras)",
+    "سماعات وأجهزة الصوت (Sounds)",
+    "مستلزمات المكاتب الذكية (Office)"
+  ],
+  "products": [
+    {
+      "id": "eko-tv-40",
+      "name": "EKO 40\" Android TV",
+      "price": "$299.00",
+      "original_price": "$299.00",
+      "discount": "0%",
+      "description": "شاشة تلفزيون ذكية بنظام أندرويد ودقة Full HD، تدعم مساعد جوجل الصوتي للتحكم بالصوت.",
+      "availability": "متوفر في المخزون"
+    },
+    {
+      "id": "humidifying-fan",
+      "name": "Humidifying Fan (مروحة الترطيب الذكية)",
+      "price": "$299.00",
+      "original_price": "$299.00",
+      "discount": "0%",
+      "description": "مروحة ترطيب رذاذ الهواء الذكية لتلطيف درجات الحرارة بكفاءة وتصميم عصري أنيق.",
+      "availability": "متوفر في المخزون"
+    },
+    {
+      "id": "ipad-mini-2022",
+      "name": "iPad mini 2022",
+      "price": "اتصل بنا لمعرفة السعر الحالي",
+      "description": "جهاز آيباد ميني اللوحي بقوة أداء هائلة وحجم مدمج مريح للحمل أثناء التنقل.",
+      "availability": "متوفر للطلب الفوري"
+    },
+    {
+      "id": "air-purifier-hepa-14",
+      "name": "Air Purifier with True HEPA H14 Filter (منقي الهواء الاحترافي)",
+      "price": "$489.00",
+      "original_price": "$619.00",
+      "discount": "15% OFF",
+      "description": "جهاز تنقية الهواء المتطور مع فلتر True HEPA H14 للتنقية الفائقة من الأتربة والروائح بنسبة 99.97%.",
+      "availability": "عرض الأسبوع المميز - متوفر"
+    },
+    {
+      "id": "shark-robot-vacuum",
+      "name": "Shaork Robot Vacuum with Self-Empty Base (مكنسة شاورك الروبوتية)",
+      "price": "$325.00",
+      "original_price": "$428.00",
+      "discount": "5% OFF",
+      "description": "مكنسة روبوت ذكية مع قاعدة تفريغ الأتربة الذاتي تلقائياً للتنظيف الذاتي دون عناء.",
+      "availability": "متوفر في المخزون"
+    },
+    {
+      "id": "durotan-espresso-machine",
+      "name": "Durotan Manual Espresso Machine (ماكينة قهوة دوروتان)",
+      "price": "$489.00",
+      "original_price": "$619.00",
+      "discount": "15% OFF",
+      "description": "ماكينة يدوية متكاملة لتحضير الإسبريسو، اللاتيه، والكابتشينو برغوة مثالية وجودة مقاهي احترافية.",
+      "availability": "الأكثر مبيعاً - متوفر"
+    },
+    {
+      "id": "sona-qled-4k-59",
+      "name": "Sona QLED Ultra HD 4k Smart Android TV 59’ (شاشة سونا QLED)",
+      "price": "$1,759.00",
+      "original_price": "$2,069.00",
+      "discount": "15% OFF",
+      "description": "شاشة ذكية حجم 59 بوصة بدقة Ultra HD 4k أندرويد وتقنية QLED لألوان مذهلة وعميقة.",
+      "availability": "الأعلى تقييماً - متوفر"
+    },
+    {
+      "id": "air-purifier-standard",
+      "name": "Air Purifier (منقي الهواء القياسي)",
+      "price": "$169.00",
+      "original_price": "$169.00",
+      "discount": "0%",
+      "description": "منقي الهواء القياسي الاقتصادي والمثالي للغرف والمساحات المتوسطة لأجواء صحية ونظيفة.",
+      "availability": "متوفر"
+    },
+    {
+      "id": "anatico-max-2",
+      "name": "Anatico Max 2 Washing Machine (غسالة أناتيكو)",
+      "price": "اتصل بنا لمعرفة السعر الحالي",
+      "description": "غسالة الملابس الكهربائية المتقدمة بقوة غسيل جبارة وتوفير فائق لاستهلاك الطاقة والمياه.",
+      "availability": "متوفر للطلب الفوري"
+    }
+  ]
+}

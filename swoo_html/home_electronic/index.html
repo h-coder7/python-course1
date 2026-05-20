@@ -49,7 +49,7 @@
 <body class="home-style1">
 
     <!--  Start loader  -->
-    <div class="loader-wrap">
+    <!-- <div class="loader-wrap">
         <svg viewBox="0 0 1000 1000" preserveAspectRatio="none">
             <path id="svg" d="M0,1005S175,995,500,995s500,5,500,5V0H0Z"></path>
         </svg>
@@ -65,7 +65,7 @@
                 <span>g</span>
             </div>
         </div>
-    </div>
+    </div> -->
     <!--  End loader  -->
 
     <!--  Start top navbar  -->
@@ -2403,13 +2403,13 @@
     </main>
     <!--End-Contents-->
 
-    <div class="text-center py-5">
+    <!-- <div class="chat-box">
         <div class="col-lg-5 mx-auto p-4 radius-10 bg-light">
             <div id="chat"></div>
             <input id="input" class="form-control" type="text" placeholder="Type message..." />
             <button id="btn" class="butn">Send</button>
         </div>
-    </div>
+    </div> -->
 
     <!--  Start footer  -->
     <footer class="tc-footer-style1">
@@ -2619,45 +2619,703 @@
     <!-- ===== home scripts ===== -->
     <script src="assets/js/home_1_scripts.js"></script>
 
+    <!-- Start Swoo Premium Floating Chat Box -->
+    <style>
+        /* Swoo Premium Floating Chat Box Styling */
+        .swoo-chat-toggle-btn {
+            position: fixed;
+            left: 30px;
+            bottom: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #0052d4, #4364f7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(67, 100, 247, 0.4);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 99999;
+            animation: floatPulseBtn 2s infinite;
+        }
 
-    <!-- ai scripts  -->
-     <script>
-        async function sendMessage(message) {
-            const response = await fetch("http://127.0.0.1:8000/chat", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                    message: message
-                })
+        .swoo-chat-toggle-btn:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 12px 30px rgba(67, 100, 247, 0.6);
+        }
+
+        .swoo-chat-toggle-btn.active {
+            transform: rotate(90deg) scale(1.05);
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            box-shadow: 0 8px 24px rgba(255, 75, 43, 0.4);
+        }
+
+        .swoo-chat-toggle-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .swoo-chat-toggle-icon i {
+            font-size: 28px;
+            color: #ffffff;
+            transition: all 0.3s;
+        }
+
+        .swoo-chat-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            width: 14px;
+            height: 14px;
+            background: #2ecc71;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+            box-shadow: 0 0 0 rgba(46, 204, 113, 0.4);
+            animation: badgePulse 2s infinite;
+        }
+
+        /* Pulse Animations */
+        @keyframes badgePulse {
+            0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.7); }
+            70% { box-shadow: 0 0 0 6px rgba(46, 204, 113, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
+
+        @keyframes floatPulseBtn {
+            0% { box-shadow: 0 8px 24px rgba(67, 100, 247, 0.4), 0 0 0 0 rgba(67, 100, 247, 0.3); }
+            70% { box-shadow: 0 8px 24px rgba(67, 100, 247, 0.4), 0 0 0 12px rgba(67, 100, 247, 0); }
+            100% { box-shadow: 0 8px 24px rgba(67, 100, 247, 0.4), 0 0 0 0 rgba(67, 100, 247, 0); }
+        }
+
+        /* Chat Window Container */
+        .swoo-chat-container {
+            position: fixed;
+            left: 30px;
+            bottom: 105px;
+            width: 380px;
+            height: 580px;
+            z-index: 99999;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border-radius: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            pointer-events: none;
+            font-family: 'Plus Jakarta Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .swoo-chat-container.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: all;
+        }
+
+        /* Chat Header */
+        .swoo-chat-header {
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #0052d4 0%, #4364f7 50%, #6fb1fc 100%);
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            z-index: 10;
+        }
+
+        .swoo-chat-header-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .swoo-chat-header-avatar {
+            position: relative;
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            border: 2px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .swoo-chat-header-status-dot {
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 10px;
+            height: 10px;
+            background: #2ecc71;
+            border-radius: 50%;
+            border: 2px solid #ffffff;
+        }
+
+        .swoo-chat-header-info {
+            display: flex;
+            flex-direction: column;
+            text-align: right;
+        }
+
+        .swoo-chat-header-title {
+            font-weight: 700;
+            font-size: 15px;
+            margin: 0;
+            letter-spacing: 0.3px;
+            line-height: 1.2;
+            color: #ffffff;
+            font-family: inherit;
+        }
+
+        .swoo-chat-header-subtitle {
+            font-size: 11px;
+            color: rgba(255, 255, 255, 0.95);
+            margin: 4px 0 0 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+        }
+
+        .swoo-chat-close-btn {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            cursor: pointer;
+            opacity: 0.85;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .swoo-chat-close-btn:hover {
+            opacity: 1;
+            transform: rotate(90deg);
+            background: rgba(255, 255, 255, 0.22);
+        }
+
+        /* Messages Area */
+        .swoo-chat-messages {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            background: rgba(250, 251, 253, 0.6);
+            scroll-behavior: smooth;
+        }
+
+        .swoo-chat-messages::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        .swoo-chat-messages::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .swoo-chat-messages::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        .swoo-chat-messages::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.18);
+        }
+
+        /* Individual Speech Bubbles */
+        .swoo-message {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            max-width: 85%;
+            opacity: 0;
+            transform: translateY(12px);
+            animation: swooMessageIn 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+        }
+
+        @keyframes swooMessageIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .swoo-message.bot {
+            align-self: flex-start;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .swoo-message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+            text-align: right;
+            direction: rtl;
+        }
+
+        .swoo-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #e0e6ed, #f0f4f8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+            flex-shrink: 0;
+        }
+
+        .swoo-message-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .swoo-text {
+            padding: 12px 16px;
+            font-size: 13.5px;
+            line-height: 1.55;
+            font-weight: 500;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            word-break: break-word;
+        }
+
+        .swoo-message.bot .swoo-text {
+            background: #ffffff;
+            color: #2d3748;
+            border-radius: 0px 18px 18px 18px;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .swoo-message.user .swoo-text {
+            background: linear-gradient(135deg, #0052d4, #4364f7);
+            color: #ffffff;
+            border-radius: 18px 0px 18px 18px;
+            box-shadow: 0 4px 12px rgba(67, 100, 247, 0.2);
+        }
+
+        .swoo-time {
+            font-size: 10px;
+            color: #a0aec0;
+            margin: 0 4px;
+        }
+        
+        .swoo-message.user .swoo-time {
+            text-align: left;
+        }
+
+        /* Quick Suggestions Chips */
+        .swoo-chat-quick-replies {
+            display: flex;
+            gap: 8px;
+            padding: 12px 20px;
+            overflow-x: auto;
+            background: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.03);
+            scrollbar-width: none;
+        }
+
+        .swoo-chat-quick-replies::-webkit-scrollbar {
+            display: none;
+        }
+
+        .swoo-reply-chip {
+            padding: 8px 14px;
+            background: rgba(67, 100, 247, 0.07);
+            color: #0052d4;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: all 0.25s ease;
+            border: 1px solid rgba(67, 100, 247, 0.12);
+            direction: rtl;
+        }
+
+        .swoo-reply-chip:hover {
+            background: #0052d4;
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(67, 100, 247, 0.25);
+            border-color: #0052d4;
+        }
+
+        /* Message Input Area */
+        .swoo-chat-input-container {
+            padding: 14px 20px 18px 20px;
+            background: #ffffff;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .swoo-chat-input {
+            flex: 1;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 12px 16px;
+            font-size: 13.5px;
+            transition: all 0.3s ease;
+            background: #f7fafc;
+            color: #2d3748;
+            direction: rtl;
+            text-align: right;
+            outline: none;
+            font-family: inherit;
+        }
+
+        .swoo-chat-input:focus {
+            border-color: #4364f7;
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(67, 100, 247, 0.15);
+        }
+
+        .swoo-chat-send-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: #0052d4;
+            color: #ffffff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 10px rgba(0, 82, 212, 0.18);
+            flex-shrink: 0;
+        }
+
+        .swoo-chat-send-btn:hover {
+            background: #4364f7;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(67, 100, 247, 0.28);
+        }
+
+        .swoo-chat-send-btn i {
+            font-size: 18px;
+            transform: rotate(-135deg); /* Point the send arrow nicely for RTL flow */
+            transition: all 0.25s;
+        }
+        
+        .swoo-chat-send-btn:hover i {
+            transform: rotate(-135deg) scale(1.1);
+        }
+
+        /* Typing Bouncing Animation */
+        .swoo-typing-container {
+            align-self: flex-start;
+        }
+
+        .swoo-typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            padding: 14px 18px;
+            background: #ffffff;
+            border: 1px solid rgba(0,0,0,0.04);
+            border-radius: 0px 18px 18px 18px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.01);
+            width: fit-content;
+        }
+
+        .swoo-typing-dot {
+            width: 6px;
+            height: 6px;
+            background: #718096;
+            border-radius: 50%;
+            animation: typingBounce 1.4s infinite ease-in-out both;
+        }
+
+        .swoo-typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .swoo-typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes typingBounce {
+            0%, 80%, 100% { transform: scale(0.3); opacity: 0.4; }
+            40% { transform: scale(1.1); opacity: 1; }
+        }
+
+        /* Responsive Mobile Layout */
+        @media (max-width: 576px) {
+            .swoo-chat-container {
+                left: 15px;
+                right: 15px;
+                bottom: 85px;
+                width: auto;
+                height: calc(82vh - 85px);
+                border-radius: 20px;
+            }
+            .swoo-chat-toggle-btn {
+                left: 15px;
+                bottom: 15px;
+                width: 54px;
+                height: 54px;
+            }
+        }
+    </style>
+
+    <div class="swoo-chat-container" id="swoo-chat-box">
+        <!-- Chat Header -->
+        <div class="swoo-chat-header">
+            <div class="swoo-chat-header-profile">
+                <div class="swoo-chat-header-avatar">
+                    🤖
+                    <span class="swoo-chat-header-status-dot"></span>
+                </div>
+                <div class="swoo-chat-header-info">
+                    <h5 class="swoo-chat-header-title">مساعد Swoo الذكي</h5>
+                    <p class="swoo-chat-header-subtitle">نشط الآن • جاهز لمساعدتك</p>
+                </div>
+            </div>
+            <button class="swoo-chat-close-btn" id="swoo-chat-close" aria-label="إغلاق المحادثة">
+                <i class="las la-times"></i>
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="swoo-chat-messages" id="chat">
+            <!-- Dynamic Messages -->
+        </div>
+
+        <!-- Quick Reply Suggestions -->
+        <div class="swoo-chat-quick-replies">
+            <div class="swoo-reply-chip" data-msg="تتبع طلبي 📦">تتبع طلبي 📦</div>
+            <div class="swoo-reply-chip" data-msg="أحدث عروض الشاشات 🔥">أحدث العروض 🔥</div>
+            <div class="swoo-reply-chip" data-msg="مواعيد عمل الدعم الفني 🕒">الدعم الفني 🕒</div>
+            <div class="swoo-reply-chip" data-msg="سياسة الاستبدال والاسترجاع ↩️">الاسترجاع ↩️</div>
+        </div>
+
+        <!-- Chat Input Area -->
+        <div class="swoo-chat-input-container">
+            <input type="text" class="swoo-chat-input" id="input" placeholder="اكتب رسالتك هنا..." autocomplete="off">
+            <button class="swoo-chat-send-btn" id="btn" aria-label="إرسال الرسالة">
+                <i class="las la-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Toggle Button -->
+    <div class="swoo-chat-toggle-btn" id="swoo-chat-toggle">
+        <div class="swoo-chat-toggle-icon">
+            <i class="las la-comments"></i>
+        </div>
+        <div class="swoo-chat-badge"></div>
+    </div>
+
+    <!-- Swoo Chat Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const chatToggle = document.getElementById("swoo-chat-toggle");
+            const chatClose = document.getElementById("swoo-chat-close");
+            const chatBoxContainer = document.getElementById("swoo-chat-box");
+            const chatMessages = document.getElementById("chat");
+            const chatInput = document.getElementById("input");
+            const chatSendBtn = document.getElementById("btn");
+            const badge = chatToggle.querySelector(".swoo-chat-badge");
+            
+            let isFirstOpen = true;
+            let isTyping = false;
+
+            // Toggle Open/Close Chat Window
+            function toggleChat(forceClose = false) {
+                if (forceClose || chatBoxContainer.classList.contains("active")) {
+                    chatBoxContainer.classList.remove("active");
+                    chatToggle.classList.remove("active");
+                    chatToggle.querySelector("i").className = "las la-comments";
+                } else {
+                    chatBoxContainer.classList.add("active");
+                    chatToggle.classList.add("active");
+                    chatToggle.querySelector("i").className = "las la-times";
+                    
+                    if (badge) {
+                        badge.style.display = "none";
+                    }
+
+                    // Send Welcome Message
+                    if (isFirstOpen) {
+                        isFirstOpen = false;
+                        showWelcomeMessage();
+                    }
+                    
+                    setTimeout(() => chatInput.focus(), 300);
+                }
+            }
+
+            chatToggle.addEventListener("click", () => toggleChat());
+            chatClose.addEventListener("click", () => toggleChat(true));
+
+            // Escape HTML helper
+            function escapeHTML(str) {
+                return str.replace(/[&<>'"]/g, 
+                    tag => ({
+                        '&': '&amp;',
+                        '<': '&lt;',
+                        '>': '&gt;',
+                        "'": '&#39;',
+                        '"': '&quot;'
+                    }[tag] || tag)
+                );
+            }
+
+            // Append Message Bubble
+            function addMessage(text, isUser = false) {
+                const timeStr = new Date().toLocaleTimeString('ar-EG', { hour: '2-digit', minute: '2-digit', hour12: true });
+                const messageDiv = document.createElement("div");
+                messageDiv.className = `swoo-message ${isUser ? 'user' : 'bot'}`;
+                
+                if (isUser) {
+                    messageDiv.innerHTML = `
+                        <div class="swoo-message-content">
+                            <div class="swoo-text">${escapeHTML(text)}</div>
+                            <div class="swoo-time">${timeStr}</div>
+                        </div>
+                    `;
+                } else {
+                    messageDiv.innerHTML = `
+                        <div class="swoo-avatar">🤖</div>
+                        <div class="swoo-message-content">
+                            <div class="swoo-text">${text}</div>
+                            <div class="swoo-time">${timeStr}</div>
+                        </div>
+                    `;
+                }
+                
+                chatMessages.appendChild(messageDiv);
+                scrollToBottom();
+            }
+
+            // Scroll to Bottom Helper
+            function scrollToBottom() {
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+
+            // Welcome Message Delay
+            function showWelcomeMessage() {
+                showTypingIndicator();
+                setTimeout(() => {
+                    hideTypingIndicator();
+                    addMessage("مرحباً بك في SWOO! أنا مساعدك الذكي 🤖. يسعدني جداً مساعدتك اليوم في تصفح عروضنا والمنتجات الإلكترونية المميزة! كيف يمكنني مساعدتك اليوم؟ ✨");
+                }, 1000);
+            }
+
+            // Typing Indicator
+            let typingIndicator = null;
+            function showTypingIndicator() {
+                if (typingIndicator) return;
+                
+                typingIndicator = document.createElement("div");
+                typingIndicator.className = "swoo-message bot swoo-typing-container";
+                typingIndicator.innerHTML = `
+                    <div class="swoo-avatar">🤖</div>
+                    <div class="swoo-typing-indicator">
+                        <div class="swoo-typing-dot"></div>
+                        <div class="swoo-typing-dot"></div>
+                        <div class="swoo-typing-dot"></div>
+                    </div>
+                `;
+                chatMessages.appendChild(typingIndicator);
+                scrollToBottom();
+            }
+
+            function hideTypingIndicator() {
+                if (typingIndicator && typingIndicator.parentNode) {
+                    typingIndicator.parentNode.removeChild(typingIndicator);
+                    typingIndicator = null;
+                }
+            }
+
+            // API Message Sender
+            async function sendMessageToAPI(message) {
+                try {
+                    const response = await fetch("http://127.0.0.1:8000/chat", {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({ message: message })
+                    });
+                    
+                    if (!response.ok) {
+                        throw new Error("HTTP error");
+                    }
+                    const data = await response.json();
+                    return data.reply;
+                } catch (error) {
+                    console.error("Chat API error:", error);
+                    return "عذراً، أواجه مشكلة في الاتصال بالخادم حالياً. يرجى التأكد من تشغيل خادم الذكاء الاصطناعي والمحاولة مرة أخرى! 🔌🤖";
+                }
+            }
+
+            // User Submit Handler
+            async function handleUserSubmit(text) {
+                if (!text.trim() || isTyping) return;
+                
+                isTyping = true;
+                chatInput.value = "";
+                chatInput.disabled = true;
+                chatSendBtn.disabled = true;
+
+                addMessage(text, true);
+                showTypingIndicator();
+
+                const reply = await sendMessageToAPI(text);
+
+                hideTypingIndicator();
+                addMessage(reply, false);
+
+                chatInput.disabled = false;
+                chatSendBtn.disabled = false;
+                isTyping = false;
+                chatInput.focus();
+            }
+
+            // Event Listeners
+            chatSendBtn.addEventListener("click", () => {
+                handleUserSubmit(chatInput.value);
             });
 
-            const data = await response.json();
-            return data.reply;
-        }
-     </script>
+            chatInput.addEventListener("keydown", (e) => {
+                if (e.key === "Enter") {
+                    e.preventDefault();
+                    handleUserSubmit(chatInput.value);
+                }
+            });
 
-     <script>
-        const input = document.querySelector("#input");
-        const btn = document.querySelector("#btn");
-        const chatBox = document.querySelector("#chat");
-
-        btn.addEventListener("click", async () => {
-            const userText = input.value;
-
-            // show user message
-            chatBox.innerHTML += `<div>User: ${userText}</div>`;
-
-            // get bot reply
-            const reply = await sendMessage(userText);
-
-            // show bot message
-            chatBox.innerHTML += `<div>Bot: ${reply}</div>`;
-
-            input.value = "";
+            // Quick reply chips action
+            const chips = document.querySelectorAll(".swoo-reply-chip");
+            chips.forEach(chip => {
+                chip.addEventListener("click", () => {
+                    const msg = chip.getAttribute("data-msg");
+                    if (msg) {
+                        handleUserSubmit(msg);
+                    }
+                });
+            });
         });
-     </script>
+    </script>
 
 
 </body>
